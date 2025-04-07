@@ -61,7 +61,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Make gradlew executable
-        run: chmod +x gradlew
+        run: chmod +x android/gradlew
 
       - name: Build APK
         run: ./gradlew clean assembleDebug
