@@ -34,6 +34,13 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle/wrapper/gradle-wrapper.properties') }}
 
+      - name: Verify gradlew presence
+        run: |
+          if [ ! -f gradlew ]; then
+            echo "Error: gradlew file is missing in the repository root."
+            exit 1
+          fi
+
       - name: Make gradlew executable
         run: chmod +x gradlew
 
@@ -48,6 +55,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: List files in root directory (Build Job)
         run: ls -la
 
@@ -64,6 +72,13 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Verify gradlew presence
+        run: |
+          if [ ! -f gradlew ]; then
+            echo "Error: gradlew file is missing in the repository root."
+            exit 1
+          fi
 
       - name: Make gradlew executable
         run: chmod +x gradlew
